@@ -1,0 +1,29 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      <h2> Home </h2>
+    </ion-title>
+    <ion-button slot="start">
+      <ion-menu-button menu="main-menu"></ion-menu-button>
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+  <ion-card *ngFor="let i of ListNews">
+    <ion-card-header>
+        <img src="{{i.img}}" >
+        <p></p>
+        <ion-card-subtitle>{{i.re}}</ion-card-subtitle>
+        <ion-card-subtitle>{{i.date}}</ion-card-subtitle>
+        <br>
+        <ion-card-title> {{i.name}} </ion-card-title>  
+    </ion-card-header>
+
+    <ion-card-content>
+      {{i.detail}}
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>

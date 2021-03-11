@@ -1,0 +1,34 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Build Guide
+    </ion-title>
+    <ion-button slot="start">
+      <ion-menu-button menu="main-menu"></ion-menu-button>
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+  <ion-card *ngFor="let i of tmpobj">
+    <ion-card-header>
+      <img src="{{i.img}}">
+      <!--ion-card-subtitle>{{i.genre}}</-ion-card-subtitle-->
+      <ion-card-title >{{i.name}}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+    <p>
+      Primary gadget : {{i.Skills1}}
+    <br>
+      Secondary Gadget 1 : {{i.Skills2}}
+    <br>
+      Secondary Gadget 2 : {{i.Skills3}}
+    </p>
+    <br>
+      Detail: {{i.Detail}}
+    </ion-card-content>
+  </ion-card>
+
+
+</ion-content>

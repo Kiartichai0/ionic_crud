@@ -1,0 +1,30 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Characters List
+    </ion-title>
+    <ion-button slot="start">
+      <ion-menu-button menu="main-menu"></ion-menu-button>
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+  <ion-searchbar showCancelButton="always"> </ion-searchbar>
+  <ion-card *ngFor="let i of ListMov">
+    <ion-card-header>
+        <img src="{{i.img}}" [routerLink]="['/overview',i]" >
+        <p></p>
+        <ion-card-subtitle>{{i.re}}</ion-card-subtitle>
+        <ion-card-subtitle>{{i.pop}}</ion-card-subtitle>
+        <br>
+        <ion-card-title> {{i.name}} </ion-card-title>  
+    </ion-card-header>
+
+    <ion-card-content>
+      Overview : {{i.cap}}
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>
