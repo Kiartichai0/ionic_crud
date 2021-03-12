@@ -1,60 +1,49 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
-    <ion-item lines="none">
-      <ion-label style="font-weight: 200;font-size: 2em; color: #53c8c4">
-        Rainbow six guild 
-        <p style="font-weight: 400;color: #5398c4 ;">{{today | date:'fullDate'}}</p>
-      </ion-label>
-    </ion-item>
+    <ion-title>Play Guide</ion-title>
     <ion-button slot="start">
       <ion-menu-button menu="main-menu"></ion-menu-button>
     </ion-button>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
+<ion-content>
+  <ion-button shape="round" color="success" expand="full" 
+  (click)="presentPromptADD()">
+    <ion-icon name="add-circle-outline"></ion-icon>&nbsp;&nbsp;ADD</ion-button>
 
-  <ion-card *ngFor="let item of todoList; let i = index" class="ion-margin">
-    <ion-card-header>
+  <ion-list>
+    
+  <ion-item *ngFor="let item of tmpcountrylist" >
+
+    <ion-item-sliding>
+      <ion-item>
+  
+        <ion-card>
+        <img src="{{item.myflag}}" />
+        <ion-card-header>
+          <ion-card-title>{{item.mycountryname}}</ion-card-title>
+          <ion-card-subtitle> {{item.mycapital}}</ion-card-subtitle>
+        </ion-card-header>
+        <ion-card-content>
+          {{item.mypop}}
+        </ion-card-content>
+      </ion-card>
+      </ion-item>
+
+      <ion-item-options side="end">
+        <ion-item-option color="warning" (click)="presentPrompt(item)">
+          <ion-icon name="create-outline"></ion-icon>EDIT
+        </ion-item-option> 
+        <ion-item-option color="danger" (click)="presentConfirm(item)">
+          <ion-icon name="trash-outline"></ion-icon>DEL
+        </ion-item-option>
+      </ion-item-options>
+
       
-      <ion-card-subtitle [style.color]="item.itemPriority === 'high' ? 'red' : (item.itemPriority === 'low' ? 'green' : 'orange' )">
-        {{item.itemCategory}}
-      </ion-card-subtitle>
+    </ion-item-sliding>
 
-      <ion-item>
-        <ion-icon *ngIf="item.itemPriority === 'high'" color="danger" size="small" name="ellipse"></ion-icon>
-        <ion-icon *ngIf="item.itemPriority === 'low'" color="success" size="small" name="ellipse"></ion-icon>
-        <ion-icon *ngIf="item.itemPriority === 'middle'" color="warning" size="small" name="ellipse"></ion-icon>
-        <ion-label> {{ item.itemName}}</ion-label>
-      </ion-item>
-
-    </ion-card-header>
-
-    <ion-card-content>
-      <ion-label>Due {{item.itemDueDate | date:'fullDate'}}</ion-label>
-    </ion-card-content>
-
-    <ion-row>
-      <ion-item>
-        <ion-icon name="time-outline"></ion-icon>
-        <p>Share</p>
-      </ion-item>
-
-      <ion-item>
-        <ion-icon name="checkmark-done-outline"></ion-icon>
-        <p>Complete</p>
-      </ion-item>
-
-      <ion-item button (click)="delete(i)">
-        <ion-icon name="trash-outline"></ion-icon>
-        <p>Cancel</p>
-      </ion-item>
-    </ion-row>
-
-  </ion-card>
-  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-    <ion-fab-button (click)="addNewItem()">
-      <ion-icon name="add"></ion-icon>
-    </ion-fab-button>
-  </ion-fab>
+  </ion-item>
+  
+</ion-list>
 </ion-content>
